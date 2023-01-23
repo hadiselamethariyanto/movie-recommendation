@@ -35,215 +35,212 @@ Solusi yang dapat dilakukan adalah dengan membuat 2 algoritma Machine Learning s
 
 # Data Understanding
 
-![cover image](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/dataset-cover.jpg)
-Gambar 1
+![cover image](https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/dataset-cover.jpg)
+Gambar 1: cover
 
-Dataset yang digunakan dalam proyek ini merupakan sample data uji fisiokimia dari Portugal utara. Dataset ini bisa didapatkan di [Kaggle: Red Wine Quality](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009).
+Dataset yang digunakan dalam proyek ini bisa didapatkan di [Kaggle: Movie Recommender System Dataset](https://www.kaggle.com/datasets/gargmanas/movierecommenderdataset).
 
 **Berikut informasi pada dataset:**
 
 - Dataset memiliki format CSV
-- Dataset memiliki 1.599 sample dengan 12 fitur
-- Dataset memiliki 1 fitur Integer dan 11 fitur decimal
+- Memiliki 2 berkas csv, yakni movies.csv dan ratings.csv
+- movies.csv memiliki 9.742 data sedangkan ratings.csv memiliki 610 data
 
 **Variable – variable pada dataset**
+**movies.csv**
 
-- Alcohol: jumlah alcohol didalam wine
-- Volatile acidity: adalah asam asetat tinggi dalam anggur yang menyebabkan rasa cuka yang tidak enak
-- Sulphates: aditif anggur yang berkontribusi pada kadar SO2 dan bertindak sebagai antimikroba dan antioksidan
-- Citric acid: bertindak sebagai pengawet untuk meningkatkan keasaman (jumlah kecil menambah kesegaran dan rasa anggur)
-- Total sulfur dioxide: adalah jumlah SO2 bentuk bebas + terikat
-- Density: anggur yang lebih manis memiliki kepadatan yang lebih tinggi
-- Chlorides: jumlah garam dalam anggur
-- Fixed Acidity: adalah asam non-volatil yang tidak mudah menguap
-- pH: tingkat keasaman
-- Free Sulfur Dioxide: itu mencegah pertumbuhan mikroba dan oksidasi anggur
-- Residual sugar: adalah jumlah gula yang tersisa setelah fermentasi berhenti. Kuncinya adalah memiliki keseimbangan yang sempurna antara — manis dan asam (anggur > 45g/ltr manis)
-- quality: ukuran kualitas untuk anggur merah, semakin besar angka semakin bagus kualitas anggur merah
+- movieId: id setiap film
+- title: judul film
+- genres: jenis kategori film
 
-### visualisasi boxplot outliers
+**ratins.csv**
 
-![alcohol](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/alcohol.png)
+- userId: id setiap user yang memberikan rating
+- movieId: id setiap film
+- rating: nilai yang diberikan user untuk setiap film
+- timestamp: waktu user memberikan rating
+
+### Exploratory Data Analysis
+
+![number movie genre](https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/newplot.png)
 Gambar 2
 
-pada gambar 2 dapat dilihat bahwa boxplot **alcohol** terdapat indikasi outliers
+pada gambar 2 dapat dilihat bahwa Drama, Commedy dan action menjadi genre dengan film terbanyak, sedangkan Documentary, Film-noir dan Western menjadi genre dengan film tersedikit.
 
-![sulphates](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/sulphates.png)
+![number of movies each year](<https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/newplot(1).png>)
 Gambar 3
 
-pada Gambar 3 dapat dilihat bahwa boxplot **sulphates** terdapat indikasi outliers.
+pada Gambar 3 dapat dilihat grafik jumlah film yang direlease setiap tahun, dan tahun 1995 menjadi tahun dengan film terbanyak.
 
-![ph](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/ph.png)
+![top 15 movie highest](<https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/newplot(3).png>)
 Gambar 4
-pada Gambar 4 dapat dilihat bahwa boxplot **pH** terdapat indikasi outliers.
+pada Gambar 4 dapat dilihat 15 film teratas dengan rating tertinggi.
 
-![fixed acidity](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/fixed%20acidity.png)
+![top 15 movie smallest](<https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/newplot(4).png>)
 Gambar 5
-pada Gambar 5 dapat dilihat bahwa boxplot **fixed acidity** terdapat indikasi outliers.
+pada Gambar 5 dapat dilihat 15 film terbawah dengan rating terendah.
 
-![volatile acidity](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/volatile%20acidity.png)
+![top 15 genres highest](<https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/newplot(5).png>)
 Gambar 6
-pada Gambar 6 dapat dilihat bahwa boxplot **volatile acidity** terdapat indikasi outliers.
+pada Gambar 6 dapat dilihat 15 genre teratas dengan rating tertinggi. disini dapat dilihat, meskipun jumlah film dengan genre docummentary sedikit, akan tetapi memiliki rating yang bagus.
 
-![citric acid](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/citric%20acid.png)
+![top 15 genres smallest](<https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/newplot(6).png>)
 Gambar 7
-pada Gambar 7 dapat dilihat bahwa boxplot **citric acid** terdapat indikasi outliers.
-
-![residual sugar](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/residual%20sugar.png)
-Gambar 8
-pada Gambar 8 dapat dilihat bahwa boxplot **residual sugar** terdapat indikasi outliers.
-
-![chlorides](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/chlorides.png)
-Gambar 9
-pada Gambar 9 dapat dilihat bahwa boxplot **chlorieds** terdapat indikasi outliers.
-
-![free sulfur dioxide](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/free%20sulfur%20dioxide.png)
-Gambar 10
-pada Gambar 10 dapat dilihat bahwa boxplot **free sulfur dioxide** terdapat indikasi outliers.
-
-![total sulfur dioxide](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/total%20sulfur%20dioxide.png)
-Gambar 11
-pada Gambar 11 dapat dilihat bahwa boxplot **total sulfure dioxide** terdapat indikasi outliers.
-
-![density](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/density.png)
-Gambar 12
-pada Gambar 12 dapat dilihat bahwa boxplot **density** terdapat indikasi outliers.
-
-![quality](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/quality.png)
-Gambar 13
-pada Gambar 13 dapat dilihat bahwa boxplot **quality** terdapat indikasi outliers.
-
-**Penanganan Outliers**
-
-Pada proyek ini , hampir seluruh variable memiliki outliers, untuk menangani outliers, teknik IQR method bisa digunakan. IQR adalah singkatan dari Interquartile Range. untuk memahami apa itu IQR, ingatlah konsep kuartil. Kuartil dari suatu populasi adalah tiga nilai yang membagi distribusi data menjadi empat sebaran. Seperempat dari data berada di bawah kuartil pertama (Q1), setengah dari data berada di bawah kuartil kedua (Q2), dan tiga perempat dari data berada di kuartil ketiga (Q3). Dengan demikian interquartile range atau IQR = Q3 - Q1, untuk lebih jelasnya dapat diperhatikan pada bagian potongan code dibawah ini :
-
-Pada proyek ini digunakan IQR method untuk menangani outliers yang pertama definisikan dulu outliers pada Q1 atau batas bawah yaitu 0.25 lalu outliers pada Q3 atau batas atas yaitu 0.75 kemudian hasil Q3 akan dikurangi dengan hasil Q1 setelah itu buat variabel baru yaitu wine untuk menampung hasil batas bawah dari pengurangan Q1 dengan 1,5 _ IQR. lalu untuk hasil batas atas digunakan penambahan 1.5 _ IQR dengan Q3
-
-dan jika dibuat persamaan dapat dilihat sebagai berikut :
-
----
-
-_Batas bawah = Q1 - 1.5 \* IQR_
-
-_Batas atas = Q3 + 1.5 \* IQR_
-
----
-
-setelah itu untuk melihat ukuran hasil penanganan _outliers_, variabel _wine_ dapat dipanggil dengan **wine.shape**. hasil penanganan outliers menghasilkan data baru yaitu **(1179, 12)**
-
-### Univariate Analysis
-
-Univariate Analysis adalah menganalisis setiap fitur secara terpisah.
-
-Karena pada dataset tidak ada data kategorik, maka kita langsung menganalisis sebaran pada setiap fitur numerik dengan melihat histogram masing-masing fiturnya.
-
-![univarate image](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/univariete.png)
-Gambar 14
-
-Mari kita lihat histogram diatas, khususnya variable ‘quality’ yang menjadi target pada data kita.
-
-- Rata-rata kualitas wine berada di angka 5 dan 6
-- Bisa dilihat pH level anggur merah selalu berada di angka 3-3.8
-
-### Multivariate Analysis
-
-Multivariate Analysis menunjukkan hubungan antara dua atau lebih fitur dalam data.
-
-**Analisis Fitur Numerik**
-
-![multivariate image](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/multivariate.png)
-Gambar 15
-
-Dari pola sebaran data(titik-titik) pada gambar diatas, kita bisa melihat adanya 3 pola yang terbentuk, yaitu positive, negative dan pola acak yang artinya tidak memiliki korelasi apapun.
-
-Untuk pola positif, kita bisa melihat hubungan yang positif antara critical acid, alcohol dan sulphates. Meskipun anggur merah dengan kandungan alcohol yang lebih tinggi kurang popular, akan tetapi mereka memiliki kualitas yang bagus.
-
-Untuk pola negative, variable volatile acidity, density, total sulfur dioxide dan cholireds memiliki pola negative dengan kualitas. Ini sangat masuk akal karena anggur merah yang kurang manis dan tingkat keasaman yang lebih rendah lebih disukai dalam pengujian kualitas.
-
-Untuk pola acak, residual sugar, pH, dan free sulfur dioxide tidak memiliki kolerasi apapun dengan kualitas.
-
-Agar lebih jelas, mari kita lihat skor korelasi pada gambar dibawah ini.
-
-![korelasi image](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/korelasi.png)
-Gambar 16
-
-Karena skor residual sugar, pH, dan free sulfur dioxide sangat kecil, maka fitur tersebut kita drop.
-
-|     | fixed acidity | volatile acidity | citric acid | chlorides | total sulfur dioxide | density | sulphates | alcohol | quality |
-| --- | ------------- | ---------------- | ----------- | --------- | -------------------- | ------- | --------- | ------- | ------- |
-| 0   | 7.4           | 0.70             | 0.00        | 0.076     | 34.0                 | 0.9978  | 0.56      | 9.4     | 5       |
-| 1   | 7.8           | 0.88             | 0.00        | 0.098     | 67.0                 | 0.9968  | 0.68      | 9.8     | 5       |
-| 2   | 7.8           | 0.76             | 0.04        | 0.092     | 54.0                 | 0.9970  | 0.65      | 9.8     | 5       |
-| 3   | 11.2          | 0.28             | 0.56        | 0.075     | 60.0                 | 0.9980  | 0.58      | 9.8     | 6       |
-| 4   | 7.4           | 0.70             | 0.00        | 0.076     | 34.0                 | 0.9978  | 0.58      | 9.4     | 5       |
+pada Gambar 7 dapat dilihat 15 genre terbawah dengan rating terendah. dapat dilihat bahwa film dengan genre action mendominasi rating terendah.
 
 # Data Preparation
 
-- _Train Test Split_
+**content based filtering**
+pada algoritme ini, dilakukan beberapa persiapan pada data sebelum diproses.
 
-Train test split aja proses membagi data menjadi data latih dan data uji. Data latih akan digunakan untuk membangun model, sedangkan data uji akan digunakan untuk menguji performa model. Pada proyek ini dataset setelah outliers di drop sebesar **1179** dibagi menjadi **943** untuk data latih dan **236** untuk data uji.
+- Melakukan pengencekan missing value
+- Menggabungkan data ratings dengan movies berdasarkan nilai movieId
+- memisahkan tahun yang ada pada kolom title ke kolom tersendiri yaitu kolom _year_
+- menghapus tahun pada judul film
+- menghapus data rating yang tidak bertipe integer
+- menghapus data dengan jumlah rating dibawah 10
+- melakukan sorting data berdasarkan movieId seacara _ascending_
+- menghapus duplikat film
+- mengkonversi data series movieId, title, dan genre menjadi list
+- membuat dictionary untuk data movie_id, movie_name, dan movie_genre
 
-- _Normalization_
+**collaborative filtering**
+pada algoritme ini juga dilakukan persiapan data sebelum dilakukan modelling.
 
-Algoritma machine learning akan memiliki performa lebih baik dan bekerja lebih cepat jika dimodelkan dengan data seragam yang memiliki skala relatif sama. Salah satu teknik normalisasi yang digunakan pada proyek ini adalah Standarisasi dengan sklearn.preprocessing.StandardScaler.
-
-|      | alcohol   | sulphates | density   | total sulfur dioxide | chlorides | critic acid | volatile acidity | fixed acidity |
-| ---- | --------- | --------- | --------- | -------------------- | --------- | ----------- | ---------------- | ------------- |
-| 698  | -0.673854 | -0.875942 | 2.172614  | 1.134441             | 0.575994  | 0.196190    | 0.532994         | 0.862216      |
-| 1543 | 0.046702  | -0.527523 | 0.613184  | -0.896516            | -1.016046 | 0.976342    | -0.527436        | 2.033886      |
-| 317  | 0.046702  | 0.082209  | 1.275323  | 1.211081             | 0.229898  | -0.695412   | 1.472232         | 1.000060      |
-| 940  | 2.105431  | 1.127465  | -0.927681 | -0.666596            | -0.323854 | 1.533593    | -1.193992        | 1.000060      |
-| 433  | -0.879727 | -1.224360 | 2.358260  | -0.934836            | 0.852871  | 2.146570    | -0.830416        | 2.860947      |
+- Menyandikan (encode) fitur 'userID ' dan ' movieID' ke dalam indeks integer dengan cara mengubah userID dan movie menjadi list tanpa nilai yang sama, melakukan encoding userID dan movieID serta melakukan proses encoding angka ke userID dan movieID
+- Memetakan ‘userID’ dan ‘movieID’ ke dataframe yang berkaitan.
+- Mengecek beberapa hal dalam data seperti jumlah user, jumlah movie, kemudian mengubah nilai rating menjadi float, mendapatkan nilai rating minimum dan maximum
 
 # Modeling
 
-Algoritma Penelitian ini melakukan pemodelan dengan 3 algoritma, yaitu _K-Nearest Neighbour_, _Random Forest_, dan _Adaboost_
+---
 
-- _K-Nearest Neighbour_ bekerja dengan membandingkan jarak satu sampel ke sampel pelatihan lain dengan memilih sejumlah k tetangga terdekat. Proyek ini menggunakan sklearn.neighbors.KNeighborsRegressor dengan memasukkan X_train dan y_train dalam membangun model. Parameter yang digunakan pada proyek ini adalah :
+##### **Content Based filtering**
 
-  - n_neighbors = Jumlah k tetangga tedekat, dimana di proyek ini menggunakan **10**.
+- Melakukan Teknik TF-IDF Vectorizer untuk menemukan representasi fitur penting dari setiap kategori movie dan genre
 
-- _Random Forest Algoritma_ adalah teknik dalam machine learning dengan metode ensemble. Teknik ini beroperasi dengan membangun banyak decision tree pada waktu pelatihan. Proyek ini menggunakan sklearn.ensemble.RandomForestRegressor dengan memasukkan X_train dan y_train dalam membangun model. Parameter yang digunakan pada proyek ini adalah :
+| movie_name                            | crime               | action              | fantasy             | horror | children            | imax | comedy               | film | musical | romance             | drama               | mystery | documentary | noir | sci                 | adventure          | war                 | animation | fi                  | thriller            |
+| ------------------------------------- | ------------------- | ------------------- | ------------------- | ------ | ------------------- | ---- | -------------------- | ---- | ------- | ------------------- | ------------------- | ------- | ----------- | ---- | ------------------- | ------------------ | ------------------- | --------- | ------------------- | ------------------- |
+| Saving Private Ryan                   | 0\.0                | 0\.4469716450168563 | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.0                | 0\.3709645261012112 | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.8140034821334791 | 0\.0      | 0\.0                | 0\.0                |
+| Driving Miss Daisy                    | 0\.0                | 0\.0                | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.0                | 1\.0                | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.0                | 0\.0      | 0\.0                | 0\.0                |
+| Jerk, The                             | 0\.0                | 0\.0                | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 1\.0                 | 0\.0 | 0\.0    | 0\.0                | 0\.0                | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.0                | 0\.0      | 0\.0                | 0\.0                |
+| Addams Family Values                  | 0\.0                | 0\.0                | 0\.6322502323811345 | 0\.0   | 0\.6736877096166014 | 0\.0 | 0\.38262842754497356 | 0\.0 | 0\.0    | 0\.0                | 0\.0                | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.0                | 0\.0      | 0\.0                | 0\.0                |
+| Salt                                  | 0\.0                | 0\.6924400514020411 | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.0                | 0\.0                | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.0                | 0\.0      | 0\.0                | 0\.7214754155301056 |
+| Eternal Sunshine of the Spotless Mind | 0\.0                | 0\.0                | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.5153078693141716 | 0\.3591328550074244 | 0\.0    | 0\.0        | 0\.0 | 0\.5502187711615739 | 0\.0               | 0\.0                | 0\.0      | 0\.5502187711615739 | 0\.0                |
+| Mississippi Burning                   | 0\.6962055625241071 | 0\.0                | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.0                | 0\.4472504759676197 | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.0                | 0\.0      | 0\.0                | 0\.5614844846095297 |
+| Logan's Run                           | 0\.0                | 0\.4266426698478334 | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.0                | 0\.0                | 0\.0    | 0\.0        | 0\.0 | 0\.5424965260187203 | 0\.478926999427212 | 0\.0                | 0\.0      | 0\.5424965260187203 | 0\.0                |
+| 28 Days                               | 0\.0                | 0\.0                | 0\.0                | 0\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.0                | 1\.0                | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.0                | 0\.0      | 0\.0                | 0\.0                |
+| Nosferatu                             | 0\.0                | 0\.0                | 0\.0                | 1\.0   | 0\.0                | 0\.0 | 0\.0                 | 0\.0 | 0\.0    | 0\.0                | 0\.0                | 0\.0    | 0\.0        | 0\.0 | 0\.0                | 0\.0               | 0\.0                | 0\.0      | 0\.0                | 0\.0                |
 
-  - n_estimators = Jumlah maksimum estimator di mana boosting dihentikan, Di sini n_estimator= di set menjadi **50**.
-  - max_depth = Kedalaman maksimum setiap tree, di proyek ini menggunakan **max_depth = 16**.
-  - random_state = Mengontrol seed acak yang diberikan pada setiap base_estimator pada setiap iterasi boosting, di proyek ini menggunakan **random_state = 55**.
-  - n_jobs: jumlah job (pekerjaan) yang digunakan secara paralel. Ia merupakan komponen untuk mengontrol thread atau proses yang berjalan secara paralel. **n_jobs=-1** artinya semua proses berjalan secara paralel.
+- Menghitung derajat kesamaan (similarity degree) antar movie dengan teknik cosine similarity
 
-- _Adaboost_ juga disebut _Adaptive Boosting_ adalah teknik dalam _machine learning_ dengan metode ensemble. Algoritme yang paling umum digunakan dengan _AdaBoost_ adalah pohon keputusan (_decision trees_) satu tingkat yang berarti memiliki pohon Keputusan dengan hanya 1 split. Pohon-pohon ini juga disebut _Decision Stumps_. Algoritme ini bertujuan untuk meningkatkan performa atau akurasi prediksi dengan cara menggabungkan beberapa model sederhana dan dianggap lemah (_weak learners_) secara berurutan sehingga membentuk suatu model yang kuat (_strong ensemble learner_). Proyek ini menggunakan sklearn.ensemble.AdaBoostRegressor dengan memasukkan X_train dan y_train dalam membangun model. Parameter yang digunakan pada proyek ini adalah :
-  - learning_rate: bobot yang diterapkan pada setiap regressor di masing-masing proses iterasi boosting, pada proyek ini digunakan **learning_rate = 0.05**
-  - random_state: digunakan untuk mengontrol random number generator yang digunakan, pada proyek ini digunakan **random_state = 55**
+![cosine_similiarity](https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/cosine_similiarity.png)
+Gambar 8: derajat kesamaan antar movie
+
+| movie_name                            | Enemy at the Gates   | Beautiful Mind, A    | The Butterfly Effect | For Your Eyes Only   | Time Bandits         |
+| ------------------------------------- | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| Airheads                              | 0\.0                 | 0\.0                 | 0\.0                 | 0\.0                 | 0\.3181208170551465  |
+| Air Force One                         | 0\.0                 | 0\.0                 | 0\.33591086252839847 | 0\.7895359864684683  | 0\.0                 |
+| I Now Pronounce You Chuck and Larry   | 0\.0                 | 0\.6665058003015498  | 0\.0                 | 0\.0                 | 0\.18549559968350032 |
+| Harry Potter and the Sorcerer's Stone | 0\.0                 | 0\.0                 | 0\.0                 | 0\.29322876679723064 | 0\.5156267573220966  |
+| Mulholland Drive                      | 0\.08087521309465465 | 0\.11150854739243288 | 0\.18631979881716737 | 0\.1394656262696644  | 0\.0                 |
+| American Graffiti                     | 0\.2888873383957831  | 0\.39831001652976267 | 0\.2583541239849375  | 0\.0                 | 0\.22823076172920503 |
+| Matrix Revolutions, The               | 0\.0                 | 0\.0                 | 0\.6068742129567533  | 0\.5751340791274846  | 0\.525887247388291   |
+| Star Trek Into Darkness               | 0\.0                 | 0\.0                 | 0\.480879738300071   | 0\.4112089563911724  | 0\.5566053937906993  |
+| Back to the Future                    | 0\.0                 | 0\.0                 | 0\.632181461378334   | 0\.3014029058331367  | 0\.8506955593398626  |
+| Cutting Edge, The                     | 0\.20431852895372787 | 0\.861703167139819   | 0\.18272360033104856 | 0\.0                 | 0\.1614185438429053  |
+
+Table 2: hasil similarity matrix pada setiap movie
+
+- Mendapatkan rekomendasi
+
+| index | id  | movie_name   | genre                                   |
+| ----- | --- | ------------ | --------------------------------------- |
+| 178   | 356 | Forrest Gump | Comedy&#124;Drama&#124;Romance&#124;War |
+
+Table 3: pengecekan data forrest gump pada dataset
+
+| index | movie_name            | genre                                   |
+| ----- | --------------------- | --------------------------------------- |
+| 0     | Life Is Beautiful     | Comedy&#124;Drama&#124;Romance&#124;War |
+| 1     | Atonement             | Drama&#124;Romance&#124;War             |
+| 2     | From Here to Eternity | Drama&#124;Romance&#124;War             |
+| 3     | English Patient, The  | Drama&#124;Romance&#124;War             |
+| 4     | Doctor Zhivago        | Drama&#124;Romance&#124;War             |
+| 5     | Gone with the Wind    | Drama&#124;Romance&#124;War             |
+| 6     | Cold Mountain         | Drama&#124;Romance&#124;War             |
+| 7     | Mister Roberts        | Comedy&#124;Drama&#124;War              |
+| 8     | Good Morning, Vietnam | Comedy&#124;Drama&#124;War              |
+| 9     | M\*A\*S\*H            | Comedy&#124;Drama&#124;War              |
+
+Table 4: Hasil rekomendasii film forrest gump
+
+---
+
+##### **Collaborative filtering**
+
+Pada bagian ini dilakukan modelling dengan Collaborative filtering memakai pendekatan _deep learning_, dengan urutan modelling sebagai berikut :
+
+- Melakukan pengacakan data agar distribusinya menjadi random
+- Membuat variabel x untuk mencocokkan data user dan movie menjadi satu value dan y untuk membuat rating dari hasil
+- melakukan pembagian data menjadi data training dan validasi dengan proporsi 80:20
+- Setelah itu dilakukan pembuatan model untuk menghitung skor kecocokan antara user dan movie dengan teknik embedding.
+- Melakukan proses _compile_ pada model
+- Melakukan proses training model dengan _epoch_ 100
+- Membuat kelas untuk mengambil sampel user secara acak dan definisikan variabel movie_not_visited sebagai sebagai daftar movie untuk direkomendasikan pada pengguna.
+- memperoleh rekomendasi movie, gunakan fungsi model.predict() dari library Keras
+- Visualisasi plot metrik evaluasi dengan matplotlib
+
+| Showing recommendations for users: 357                                                     |
+| ------------------------------------------------------------------------------------------ | --------- | -------- | ------- | ------- | -------- |
+| ===========================                                                                |
+| Movie with high ratings from user                                                          |
+| --------------------------------                                                           |
+| Toy Story (1995) : Adventure                                                               | Animation | Children | Comedy  | Fantasy |
+| Tombstone (1993) : Action                                                                  | Drama     | Western  |
+| To Kill a Mockingbird (1962) : Drama                                                       |
+| Goodfellas (1990) : Crime                                                                  | Drama     |
+| Capturing the Friedmans (2003) : Documentary                                               |
+| --------------------------------                                                           |
+| Top 10 movie recommendation                                                                |
+| --------------------------------                                                           |
+| Heidi Fleiss: Hollywood Madam (1995) : Documentary                                         |
+| Jonah Who Will Be 25 in the Year 2000 (Jonas qui aura 25 ans en l'an 2000) (1976) : Comedy |
+| Stunt Man, The (1980) : Action                                                             | Adventure | Comedy   | Drama   | Romance | Thriller |
+| Belle époque (1992) : Comedy                                                               | Romance   |
+| Trial, The (Procès, Le) (1962) : Drama                                                     |
+| Adam's Rib (1949) : Comedy                                                                 | Romance   |
+| Enter the Void (2009) : Drama                                                              |
+| Terri (2011) : Comedy                                                                      |
+| Maniac Cop 2 (1990) : Action                                                               | Horror    | Thriller |
+| Stuart Little 3: Call of the Wild (2005) : Animation                                       | Children  | Comedy   | Fantasy |
+
+Table 5: hasil rekomendasi menggunakan algoritme _content based filtering_
 
 # Evaluation
 
-Metrik evaluasi yang digunakan pada proyek ini adalah akurasi dan _mean squared error (MSE)_. Akurasi menentukan tingkat kemiripan antara hasil prediksi dengan nilai yang sebenarnya (y_test). Mean squared error (MSE) mengukur error dalam model statistik dengan cara menghitung rata-rata error dari kuadrat hasil aktual dikurang hasil prediksi. Berikut formulan MSE :
+#### **Content based filtering**
 
-MSE = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$
+Metric yang digunakan pada sistem rekomendasi judul film berdasarkan teknik **Content based filtering** adalah accuracy precision. Precision adalah metrik yang membandingkan rasio prediksi benar atau positif dengan keseluruhan hasil yang diprediksi positif dengan rumus
 
-Keterangan:
-N = jumlah dataset
-yi = nilai sebenarnya
-y_pred = nilai prediksi
+```python
+Precission = (TP) / (TP+FP).
 
-Berikut ini Hasil evaluasi pada data latih dan data test setiap alogirtme.
+keterangan:
+TP = True Positif (prediksi positif dan hal tersebut benar)
+FP = False Negatif (prediksi positif dan hal tersebut salah)
+```
 
-| Plugin   | train    | test     |
-| -------- | -------- | -------- |
-| KNN      | 0.000278 | 0.000757 |
-| RF       | 0.000046 | 0.000774 |
-| Boosting | 0.000312 | 0.000808 |
+#### **Collaborative filtering**
 
-Untuk memudahkan, mari kita plot metrik tersebut dengan bar chart.
+Dalam proyek ini, digunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi untuk mengukur kinerja model menggunakan pendekatan pembelajaran mendalam untuk sistem rekomendasi. Root mean squared error (RMSE) adalah metrik yang mengukur perbedaan antara nilai prediksi model sebagai perkiraan nilai yang diamati. Root mean squared error adalah hasil dari akar kuadrat dari mean squared error. Keakuratan metode estimasi kesalahan pengukuran ditunjukkan dengan adanya nilai RMSE yang kecil. Metode estimasi dengan root mean square error (RMSE) yang kecil dikatakan lebih akurat daripada metode estimasi dengan root mean square error yang besar (RMSE). Metode yang digunakan untuk menghitung root-mean-square error (RMSE) adalah dengan mengurangkan nilai aktual dari nilai prediksi, kemudian kuadratkan dan bagi jumlah dengan jumlah data. Hasil perhitungan tersebut dihitung ulang untuk mencari nilai akar kuadrat. Di bawah ini adalah rumus untuk menghitung RSME.
 
-![akurasi image](https://raw.githubusercontent.com/hadiselamethariyanto/red-wine-quality-machine-learning/main/images/akurasi.png)
-Gambar 17
+RMSE = \sqrt{\frac{1}{n}\Sigma\_{i=1}^{n}{\Big(\frac{d_i -f_i}{\sigma_i}\Big)^2}}
 
-Dari gambar diatas kitab isa melihat bahwa model Random Forest (RF) memiliki nilai error paling kecil dengan tingkat akurasi yang baik, disusul dengan model Boosting. Sedangkan model KNN memiliki nilai error yang tinggi dan tingkat akurasi yang kurang baik.
+Berikut merupakan visualisai metrik pada proses training terhadap model Deep Learning sebelumnya:
 
-Model-model tersebut kemudian diuji dengan beberapa data dari dataset untuk mengetahui akurasi model tersebut.
+![This is an image](https://raw.githubusercontent.com/hadiselamethariyanto/movie-recommendation/main/images/model_metrics.png)
 
-|     | y_true | prediksi_KNN | prediksi_RF | prediksi_Boosting |
-| --- | ------ | ------------ | ----------- | ----------------- |
-| 211 | 6      | 5.0          | 6.0         | 6.1               |
+Gambar 9 : Visualisasi plot _metric_
 
-Pada gambar diatas terlihat bahwa model Random Forest (RF) memberikan nilai yang sama dengan nilai aslinya, sedangkan model Boosting memberikan nilai dengan selisih sedikit, dan untuk model KNN memiliki nilai yang cukup jauh berbeda.
+Pada gambar 9 menunjukkan bahwa model mempunyai nilai **root_mean_squared_error** sebesar 0.1944 dengan nilai loss yang diperoleh sebanyak 0.6045 , hasil tersebut sudah cukup bagus karena dengan nilai root_mean_squared_error sebesar 0.1944 berarti perbedaan nilai dari prediksi sebuah model sebagai estimasi atas nilai yang diobservasi sebesar 0.1944
