@@ -236,7 +236,7 @@ FP = False Negatif (prediksi positif dan hal tersebut salah)
 
 Dalam proyek ini, digunakan Root Mean Squared Error (RMSE) sebagai metrik evaluasi untuk mengukur kinerja model menggunakan pendekatan pembelajaran mendalam untuk sistem rekomendasi. Root mean squared error (RMSE) adalah metrik yang mengukur perbedaan antara nilai prediksi model sebagai perkiraan nilai yang diamati. Root mean squared error adalah hasil dari akar kuadrat dari mean squared error. Keakuratan metode estimasi kesalahan pengukuran ditunjukkan dengan adanya nilai RMSE yang kecil. Metode estimasi dengan root mean square error (RMSE) yang kecil dikatakan lebih akurat daripada metode estimasi dengan root mean square error yang besar (RMSE). Metode yang digunakan untuk menghitung root-mean-square error (RMSE) adalah dengan mengurangkan nilai aktual dari nilai prediksi, kemudian kuadratkan dan bagi jumlah dengan jumlah data. Hasil perhitungan tersebut dihitung ulang untuk mencari nilai akar kuadrat. Di bawah ini adalah rumus untuk menghitung RSME.
 
-RMSE = \sqrt{\frac{1}{n}\Sigma\_{i=1}^{n}{\Big(\frac{d_i -f_i}{\sigma_i}\Big)^2}}
+RMSE = $ \sqrt{\frac{1}{n}\Sigma\_{i=1}^{n}{\Big(\frac{d_i -f_i}{\sigma_i}\Big)^2}} $
 
 Berikut merupakan visualisai metrik pada proses training terhadap model Deep Learning sebelumnya:
 
