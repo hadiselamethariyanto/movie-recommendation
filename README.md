@@ -192,11 +192,12 @@ Pada bagian ini dilakukan modelling dengan Collaborative filtering memakai pende
 - Visualisasi plot metrik evaluasi dengan matplotlib
 
 | Showing recommendations for users: 357                                                     |
-| ------------------------------------------------------------------------------------------ | --------- | -------- | ------- | ------- | -------- |
+| ------------------------------------------------------------------------------------------ | --------- | -------- | ------- | -------- | -------- |
+| ---------                                                                                  | --------  | -------  | ------- | -------- |
 | ===========================                                                                |
 | Movie with high ratings from user                                                          |
 | --------------------------------                                                           |
-| Toy Story (1995) : Adventure                                                               | Animation | Children | Comedy  | Fantasy |
+| Toy Story (1995) : Adventure                                                               | Animation | Children | Comedy  | Fantasy  |
 | Tombstone (1993) : Action                                                                  | Drama     | Western  |
 | To Kill a Mockingbird (1962) : Drama                                                       |
 | Goodfellas (1990) : Crime                                                                  | Drama     |
@@ -206,7 +207,7 @@ Pada bagian ini dilakukan modelling dengan Collaborative filtering memakai pende
 | --------------------------------                                                           |
 | Heidi Fleiss: Hollywood Madam (1995) : Documentary                                         |
 | Jonah Who Will Be 25 in the Year 2000 (Jonas qui aura 25 ans en l'an 2000) (1976) : Comedy |
-| Stunt Man, The (1980) : Action                                                             | Adventure | Comedy   | Drama   | Romance | Thriller |
+| Stunt Man, The (1980) : Action                                                             | Adventure | Comedy   | Drama   | Romance  | Thriller |
 | Belle époque (1992) : Comedy                                                               | Romance   |
 | Trial, The (Procès, Le) (1962) : Drama                                                     |
 | Adam's Rib (1949) : Comedy                                                                 | Romance   |
